@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charing Cross Car Care Center · Baltimore</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600&display=swap" />
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f3ead7; color: #1a1612; font-family: "IBM Plex Sans", sans-serif; }
+    a { color: inherit; }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 0 20px; }
+    header { border-bottom: 2px solid #1a1612; }
+    .top { display: flex; justify-content: space-between; gap: 16px; align-items: flex-end; padding: 16px 0; }
+    .mono { font-family: "IBM Plex Mono", monospace; letter-spacing: .12em; text-transform: uppercase; font-size: 12px; }
+    h1 { font-size: clamp(40px, 8vw, 64px); line-height: .95; margin: 12px 0; }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: #1a1612; border: 2px solid #1a1612; }
+    .facts div { background: #f3ead7; padding: 14px; }
+    ol { margin: 22px 0 0; padding: 0; list-style: none; border: 2px solid #1a1612; }
+    li { display: flex; gap: 14px; padding: 12px 14px; border-top: 2px solid #1a1612; }
+    li:first-child { border-top: 0; }
+    .num { font-family: "IBM Plex Mono", monospace; color: #e24a1b; width: 28px; }
+    .phone { display: inline-block; margin: 22px 0 40px; background: #1a1612; color: #f3ead7; text-decoration: none; padding: 14px 18px; font-weight: 600; }
+    footer { border-top: 2px solid #1a1612; padding: 20px 20px 80px; }
+    .dock { display: none; }
+    @media (max-width: 700px) {
+      .dock { display: block; position: fixed; left: 0; right: 0; bottom: 0; background: #f3ead7; padding: 12px; border-top: 2px solid #1a1612; }
+      .dock a { display: flex; height: 48px; align-items: center; justify-content: center; background: #e24a1b; color: #fff; text-decoration: none; font-weight: 600; }
+    }
+  </style>
+</head>
+<body>
+  <header><div class="wrap top">
+    <div>
+      <p class="mono">Work order · CCC-1984</p>
+      <strong style="font-size:22px;">Charing Cross Car Care</strong>
+    </div>
+    <a href="tel:+14107886111" style="color:#e24a1b;font-weight:600;text-align:right;">(410) 788-6111<br><span class="mono" id="status" style="color:#1a1612;">Call the shop</span></a>
+  </div></header>
+  <main class="wrap">
+    <p class="mono" style="margin-top:28px;">Baltimore National Pike</p>
+    <h1>Write it up. Then call.</h1>
+    <p style="max-width:36rem;font-size:18px;line-height:1.5;">Independent shop in the Charing Cross Shopping Center since 1984. A price before the work starts.</p>
+    <div class="facts">
+      <div><p class="mono">Address</p><p>5204 Baltimore National Pike<br>Baltimore, MD 21229</p></div>
+      <div><p class="mono">Hours</p><p>Mon–Fri, 7:00–6:00<br>Sat–Sun closed</p></div>
+      <div><p class="mono">Emissions</p><p>Maryland facility #5152</p></div>
+      <div><p class="mono">Engines</p><p>Jasper replacements</p></div>
+    </div>
+    <ol>
+      <li><span class="num">01</span>Honest look</li>
+      <li><span class="num">02</span>Oil and fluids</li>
+      <li><span class="num">03</span>Brakes</li>
+      <li><span class="num">04</span>Check engine</li>
+      <li><span class="num">05</span>Pulls or shakes</li>
+      <li><span class="num">06</span>Exhaust and emissions</li>
+      <li><span class="num">07</span>Steering</li>
+      <li><span class="num">08</span>Electrical</li>
+      <li><span class="num">09</span>Engine or transmission</li>
+      <li><span class="num">10</span>Heat or A/C</li>
+    </ol>
+    <p style="margin-top:22px;">From the beltway: Exit 15A, five lights, shop on the left. <a href="https://www.google.com/maps/search/?api=1&query=5204+Baltimore+National+Pike+Baltimore+MD+21229" style="color:#e24a1b;font-weight:600;">Open directions</a></p>
+    <a class="phone" href="tel:+14107886111">Call (410) 788-6111</a>
+  </main>
+  <footer>Visa · Mastercard · Discover · Fax (410) 788-0091</footer>
+  <div class="dock"><a href="tel:+14107886111">Call (410) 788-6111</a></div>
+  <script>
+    const parts = new Intl.DateTimeFormat("en-US",{timeZone:"America/New_York",weekday:"short",hour:"2-digit",hourCycle:"h23"}).formatToParts(new Date());
+    const day = ((parts.find(p=>p.type==="weekday")||{}).value||"").slice(0,3);
+    const hour = Number((parts.find(p=>p.type==="hour")||{}).value||0);
+    const open = ["Mon","Tue","Wed","Thu","Fri"].includes(day) && hour>=7 && hour<18;
+    document.getElementById("status").textContent = open ? "Open now" : "Closed";
+  </script>
+</body>
+</html>
